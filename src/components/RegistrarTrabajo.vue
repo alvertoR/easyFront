@@ -9,123 +9,106 @@
         </p>
       </div>
     </section>
-    <section class="form">
-      <div class="container-form">
-        <form @submit.prevent="isLogin()">
-          <div class="nombre">
-            <h2>Nombre del trabajo</h2>
-            <input
-              type="text"
-              name=""
-              placeholder="e.j, Derivadas calculo diferencial"
-            />
-            <div class="separadorTrabajo"></div>
-          </div>
-          <div class="descripcion">
-            <h2>Decripción del trabajo</h2>
-            <div class="textarea">
-              <textarea
-                name=""
-                cols="30"
-                rows="10"
-                placeholder="Describe tu trabajo aquí..."
-              ></textarea>
+      <section class="form">
+            <div class="container-form">
+                <form enctype="multipart/form-data" @submit.prevent="isLogin(newTrabajo)">
+                    <div class="nombre">
+                        <h2>Nombre del trabajo</h2>
+                        <input type="text" name="" v-model="newTrabajo.nombre" placeholder="e.j, Derivadas calculo diferencial">
+                        <div class="separadorTrabajo"></div>
+                    </div>
+                    <div class="descripcion">
+                        <h2>Decripción del trabajo</h2>
+                        <div class="textarea">
+                            <textarea name="" cols="30" v-model="newTrabajo.descripcion" rows="10" placeholder="Describe tu trabajo aquí..."></textarea>
+                        </div>
+                    </div>
+                    <div class="upload">
+                        <div class="file">
+                            <p>+ Subir archivos</p>
+                            <input class="btn" type="file" @change="getFile" name="" value="+ Subir archivos">
+                        </div>
+                        <div class="parrafo">
+                            <p>Arrastra documentos o imagenes que puedan ser de utilidad para explicar tu trabajo.</p>
+                        </div>
+                    </div>
+                    <div class="materia">
+                        <h2>Materia del trabajo</h2>
+                        <div class="container-box">
+                            <div class="box">
+                                <select name="" v-model="newTrabajo.materia">
+                                    <option value="">Seleccione una materia</option>
+                                    <option value="calculo">Cálculo</option>
+                                    <option value="ecuaciones">Ecuaciones</option>
+                                    <option value="fisica">Física</option>
+                                    <option value="quimica">Química</option>
+                                    <option value="ingles">Inglés</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fecha">
+                        <h2>Fecha limite de entrega</h2>
+                        <div class="dia">
+                            <p>Día:</p>
+                            <div class="fechaLimi">
+                                <div class="boxDia">
+                                    <select name="" v-model="newTrabajo.dia">
+                                        <option value=""></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="margen">Mes:</p>
+                            <div class="fechaLimi">
+                                <div class="boxDia">
+                                    <select name="" v-model="newTrabajo.mes">
+                                        <option value=""></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="margen">Año:</p>
+                            <div class="fechaLimi">
+                                <div class="boxDia">
+                                    <select name="" v-model="newTrabajo.year">
+                                        <option value=""></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pago">
+                        <h2>Materia del trabajo</h2>
+                        <div class="container-box">
+                            <div class="boxPago">
+                                <select name="" v-model="newTrabajo.pago">
+                                    <option value="">Escoge un rango</option>
+                                    <option value="10.000 - 15.000">$10.000 - $15.000</option>
+                                    <option value="20.000 - 25.000">$20.000 - $25.000</option>
+                                    <option value="30.000 - 35.000">$30.000 - $35.000</option>
+                                    <option value="40.000 - 45.000">$40.000 - $45.000</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boton">
+                        <input id="buttonAcomp" class="submit" type="submit" value="Publicar tu trabajo">
+                    </div>
+                </form>
             </div>
-          </div>
-          <div class="upload">
-            <div class="file">
-              <p>+ Subir archivos</p>
-              <input class="btn" type="file" name="" value="+ Subir archivos" />
-            </div>
-            <div class="parrafo">
-              <p>
-                Arrastra documentos o imagenes que puedan ser de utilidad para
-                explicar tu trabajo.
-              </p>
-            </div>
-          </div>
-          <div class="materia">
-            <h2>Materia del trabajo</h2>
-            <div class="container-box">
-              <div class="box">
-                <select name="">
-                  <option value="">Seleccione una materia</option>
-                  <option value="">Materia 1</option>
-                  <option value="">Materia 2</option>
-                  <option value="">Materia 3</option>
-                  <option value="">Materia 4</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="fecha">
-            <h2>Fecha limite de entrega</h2>
-            <div class="dia">
-              <p>Día:</p>
-              <div class="fechaLimi">
-                <div class="boxDia">
-                  <select name="">
-                    <option value=""></option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                  </select>
-                </div>
-              </div>
-              <p class="margen">Mes:</p>
-              <div class="fechaLimi">
-                <div class="boxDia">
-                  <select name="">
-                    <option value=""></option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                  </select>
-                </div>
-              </div>
-              <p class="margen">Año:</p>
-              <div class="fechaLimi">
-                <div class="boxDia">
-                  <select name="">
-                    <option value=""></option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pago">
-            <h2>Materia del trabajo</h2>
-            <div class="container-box">
-              <div class="boxPago">
-                <select name="">
-                  <option value="">Escoge un rango</option>
-                  <option value="">$10.000 - $15.000</option>
-                  <option value="">$20.000 - $25.000</option>
-                  <option value="">$30.000 - $35.000</option>
-                  <option value="">$40.000 - $45.000</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="boton">
-            <router-link to="/publicar-trabajo">
-              <input
-                id="buttonAcomp"
-                class="submit"
-                type="submit"
-                value="Publicar tu trabajo"
-              />
-            </router-link>
-          </div>
-        </form>
-      </div>
-    </section>
+
+        </section>
 
     <!--Inicio maquetación del Pop-up-->
     <div class="bg-modalAcomp">
@@ -283,6 +266,9 @@
 </template>
 
 <script>
+import JWT      from 'jwt-decode';
+import rutesAPi from '../backRoutes';
+
 export default {
   data() {
     return {
@@ -295,7 +281,17 @@ export default {
       logUser: {
         email: "",
         password: ""
-      }
+      },
+      newTrabajo:{
+        nombre:'',
+        descripcion:'',
+        materia:'',
+        dia:'',
+        mes:'',
+        year:'',
+        pago:''
+      },
+      archivo:''
     };
   },
   methods: {
@@ -322,25 +318,43 @@ export default {
         }
       });
     },
-    isLogin() {
-      this.popIn();
+    isLogin(trabajo){
+      var sesion = localStorage.getItem('usertoken');
+      if(!sesion){
+          this.popIn();
+      }
+      var decode = JWT(sesion);
+      console.log(decode);
+
+      
+      this.newTrabajo.idUser = decode._id;
+      
+      var archivo = this.archivo;
+      var id = this.newTrabajo.idUse
+      this.axios.post(rutesAPi.trabajo.newWork, trabajo)
+      .then(res => {
+            let idWork = res.data._i
+            const formData = new FormData();
+
+            formData.append("archivo", archivo);
+            this.axios.post(`${rutesAPi.trabajo.uploadFile}${id}/${idWork}`, formData)
+            .then(res => {
+                const exito = 0;
+            });
+      })
+
+      console.log(exito);
+/*
+      if(exito == 0){
+        this.$router.push({name: 'sesionIniciado'});
+      }
+*/
+      
+                    
     },
-    login() {
-      document
-        .querySelector("#buttonAcompLogin")
-        .addEventListener("click", function(e) {
-          document.querySelector(".bg-modalAcomp").style.display = "none";
-          document.querySelector(".bg-modalAl").style.display = "flex";
-        });
-
-      var container = document.querySelector(".bg-modalAl");
-
-      document.addEventListener("click", function(e) {
-        var click = e.target;
-        if (click == container) {
-          document.querySelector(".bg-modalAl").style.display = "none";
-        }
-      });
+    getFile(e){
+      let archivo = e.target.files[0]; 
+      this.archivo = archivo;
     }
   }
 };

@@ -254,7 +254,7 @@ export default {
         var jwt = res.data;
         localStorage.setItem("usertoken", jwt);
         this.logUser = {};
-        this.$router.push({ name: "newTrabajo" });
+        this.$router.push({ name: "sesionIniciado" });
       });
     }
   }

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import cabeza from "../components/HeaderLogin";
+import cabeza from "../components/HeaderIniciado";
 import trabajo from "../components/RegistrarTrabajo";
 import pie from "../components/Footer";
 export default {

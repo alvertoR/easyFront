@@ -17,7 +17,7 @@ export default {
     strogeIsHere(){
             var sesion = localStorage.getItem('usertoken');
             if(sesion){
-                this.$router.push({name: 'newTrabajo'});
+                this.$router.push({name: 'sesionIniciado'});
             }
         }
   },

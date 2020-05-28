@@ -16,6 +16,17 @@ export default {
     cabeza,
     cuerpo,
     pie
+  },  
+  methods: {
+    strogeIsHere() {
+      var sesion = localStorage.getItem("usertoken");
+      if (!sesion) {
+        this.$router.push({ name: "home" });
+      }
+    }
+  },
+  mounted() {
+    this.strogeIsHere();
   }
 };
 </script>

@@ -18,9 +18,7 @@
                 </a>
               </li>
               <li>
-                <router-link to="/">
-                  <a href="">Cerrar Sesión</a>
-                </router-link>
+                  <a @click="logout()">Cerrar Sesión</a>
               </li>
             </ul>
           </nav>
@@ -32,7 +30,23 @@
 
 <script>
 import routesApi from "../backRoutes";
-export default {};
+export default {
+  methods:{
+    logout(){
+        localStorage.removeItem('usertoken')
+        this.$router.push({name: 'home'});
+    },
+    setUser(){
+        const token   = localStorage.getItem('usertoken')
+        const decode  = jwtDecode(token);
+        
+    },
+        
+  },
+  mounted(){
+    this.setUser();
+  },
+};
 </script>
 
 <style scoped>

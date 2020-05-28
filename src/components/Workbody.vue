@@ -4,7 +4,7 @@
       <nav>
         <ul>
           <li>
-            <router-link to="">
+            <router-link to="/iniciado">
               <a href="">Inicio</a>
             </router-link>
           </li>
@@ -100,7 +100,7 @@ export default {
   methods: {
     getTrabajos() {
       this.axios
-        .get(api.trabajo.uploadFile)
+        .get(api.trabajo.getWorks)
         .then(res => {
           const listado = [];
           res.data.trabajos.map(trabajo => {

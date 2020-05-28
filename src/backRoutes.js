@@ -1,16 +1,19 @@
+var url = "https://easyworkback.herokuapp.com/easyWork"
+
 var routesApi = {
   soporte: {
-    postPqr: "http://localhost:3000/easyWork/soporte/newPqr",
-    getPqrs: "http://localhost:3000/easyWork/soporte/pqrs"
+    postPqr: `${url}/soporte/newPqr`,
+    getPqrs: `${url}/soporte/pqrs`
   },
   trabajo: {
-    newWork: "https://easyworkback.herokuapp.com/easyWork/user/new-work",
-    uploadFile: "https://easyworkback.herokuapp.com/easyWork/user/get-works" //+idUser//+idWork
+    newWork: `${url}/user/new-work`,
+    getWorks: `${url}/user/get-works`,
+    uploadFile: `${url}/user/upload-file/` //+idUser//+idWork
   },
   user: {
-    register: "https://easyworkback.herokuapp.com/easyWork/user/register",
-    login: "http://localhost:3000/easyWork/user/login",
-    getUsers: "https://easyworkback.herokuapp.com/easyWork/user/get-users"
+    register: `${url}/user/register`,
+    login: `${url}/user/login`,
+    getUsers: `${url}/user/get-users`
   }
 };
 
