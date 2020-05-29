@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="todo">
     <section class="navegador">
       <nav>
         <ul>
@@ -54,11 +54,7 @@
             </th>
           </tr>
           <tr>
-            <td
-              v-for="trabajo in findWorks"
-              :key="trabajo._id"
-              @click="descrip"
-            >
+            <td v-for="trabajo in findWorks" :key="trabajo._id">
               <h1>{{ trabajo.nameWork }}</h1>
               <p>
                 {{ trabajo.description }}
@@ -87,24 +83,24 @@ export default {
     return {
       trabajos: [],
       busqueda: "",
-      filtrado: []
+      filtrado: [],
     };
   },
   computed: {
     findWorks() {
-      return this.trabajos.filter(trabajo => {
+      return this.trabajos.filter((trabajo) => {
         return trabajo.nameWork.includes(this.busqueda);
       });
-    }
+    },
   },
   methods: {
     getTrabajos() {
       this.axios
         .get(api.trabajo.getWorks)
-        .then(res => {
+        .then((res) => {
           const listado = [];
-          res.data.trabajos.map(trabajo => {
-            trabajo.map(valor => {
+          res.data.trabajos.map((trabajo) => {
+            trabajo.map((valor) => {
               var help = valor.year;
               if (help != 1) {
                 listado.push({
@@ -116,23 +112,27 @@ export default {
                   day: valor.dia,
                   mounth: valor.mes,
                   year: valor.year,
-                  cost: valor.pago
+                  cost: valor.pago,
                 });
               }
             });
           });
           this.trabajos = listado;
         })
-        .catch(e => console.log(e));
-    }
+        .catch((e) => console.log(e));
+    },
   },
   mounted() {
     this.getTrabajos();
-  }
+  },
 };
 </script>
 
 <style scoped>
+.todo {
+  min-height: 1000px;
+}
+
 /* Menú naveador*/
 
 .navegador {
